@@ -167,3 +167,28 @@ button:hover {
         flex-direction: column;
     }
 }
+
+
+/* Estilização do nome do usuário */
+.user-info {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+}

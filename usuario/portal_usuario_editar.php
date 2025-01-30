@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login_usuario.php"); // Se não estiver logado, redireciona para o login
+    exit;
+}
+
+$nome_usuario = $_SESSION['nome_usuario']; // Recupera o nome do usuário da sessão
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,6 +19,12 @@
 </head>
 
 <body>
+    <div class="user-info">
+        <span class="user-name">Olá, <?php echo htmlspecialchars($nome_usuario); ?>!</span>
+        <a href="logout.php" class="logout-button">Sair</a>
+    </div>
+
+
     <div class="container">
         <!-- Menu Lateral -->
         <div class="sidebar">
