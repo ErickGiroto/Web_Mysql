@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($senha, $senha_hash)) {
             $_SESSION['usuario_id'] = $id;
             $_SESSION['nome_usuario'] = $nome_completo;
-            header("Location: portal_usuario.html");
+            $_SESSION['expire_time'] = time() + 3600; // 1 hora de validade
+            header("Location: portal_usuario.php");
             exit;
         } else {
             echo "<!DOCTYPE html>

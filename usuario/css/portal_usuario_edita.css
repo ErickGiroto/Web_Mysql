@@ -1,0 +1,169 @@
+/* Importa fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fundo com animação */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(-45deg, #ff416c, #ff4b2b, #1e90ff, #2bff88);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estrutura Principal */
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    height: 75vh;
+    gap: 15px;
+    /* Pequeno espaço entre os blocos */
+}
+
+/* Menu Lateral */
+.sidebar {
+    width: 280px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    height: 100%;
+}
+
+.sidebar-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-list li {
+    margin: 15px 0;
+}
+
+.sidebar-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Formulário */
+.form-container {
+    width: 100%;
+    /* Mesmo tamanho do menu */
+    height: 100%;
+    /* Mesmo tamanho do menu */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Título */
+h2 {
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Inputs */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+input::placeholder {
+    color: #ddd;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #ff416c;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4b2b;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .sidebar,
+    .form-container {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+}
