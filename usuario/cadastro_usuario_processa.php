@@ -24,11 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Perguntas de Segurança
     $pergunta1 = $_POST['pergunta1'];
-    $resposta1 = $_POST['resposta1'];
+    $resposta1 = trim($_POST['resposta1']); // Removida a criptografia
     $pergunta2 = $_POST['pergunta2'];
-    $resposta2 = $_POST['resposta2'];
+    $resposta2 = trim($_POST['resposta2']); // Removida a criptografia
     $pergunta3 = $_POST['pergunta3'];
-    $resposta3 = $_POST['resposta3'];
+    $resposta3 = trim($_POST['resposta3']); // Removida a criptografia
     
     // Validação das Perguntas de Segurança (não devem ser iguais)
     if ($pergunta1 === $pergunta2 || $pergunta1 === $pergunta3 || $pergunta2 === $pergunta3) {
@@ -67,7 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 .link:hover { text-decoration: underline; }
                 .alink {color: white; text-decoration: none; font-weight: bold; transition: 0.3s;}
                 .alink:hover {text-decoration: underline;}
-
             </style>
         </head>
         <body>
@@ -92,13 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Erro na preparação: " . $conn->error);
     }
     
-    // Hash da senha e das respostas
+    // Hash da senha (mantida a criptografia)
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-    $resposta1_hash = password_hash($resposta1, PASSWORD_DEFAULT);
-    $resposta2_hash = password_hash($resposta2, PASSWORD_DEFAULT);
-    $resposta3_hash = password_hash($resposta3, PASSWORD_DEFAULT);
     
-    // Bind dos parâmetros
+    // Bind dos parâmetros (respostas sem criptografia)
     $stmt->bind_param(
         "ssssssssssssssssssss",
         $nome,
@@ -116,11 +112,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $telefone,
         $data_nascimento,
         $pergunta1,
-        $resposta1_hash,
+        $resposta1, // Resposta em texto puro
         $pergunta2,
-        $resposta2_hash,
+        $resposta2, // Resposta em texto puro
         $pergunta3,
-        $resposta3_hash
+        $resposta3  // Resposta em texto puro
     );
     
     // Execução da consulta

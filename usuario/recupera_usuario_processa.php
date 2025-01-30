@@ -1,19 +1,32 @@
 <?php
 $conn = new mysqli("localhost", "root", "root", "system_brazil");
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $resposta1 = $_POST['resposta1'];
-    $resposta2 = $_POST['resposta2'];
-    $resposta3 = $_POST['resposta3'];
+if ($conn->connect_error) {
+    die("Erro de conexão: " . $conn->connect_error);
+}
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = trim($_POST['email']);
+    $resposta1 = trim($_POST['resposta1']);
+    $resposta2 = trim($_POST['resposta2']);
+    $resposta3 = trim($_POST['resposta3']);
+
+    // Preparar a consulta para obter as respostas armazenadas no banco
     $stmt = $conn->prepare("SELECT resposta1, resposta2, resposta3 FROM usuarios WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $stmt->bind_result($resposta1_hash, $resposta2_hash, $resposta3_hash);
+    $stmt->bind_result($resposta1_db, $resposta2_db, $resposta3_db);
     $stmt->fetch();
+    $stmt->close();
+    
+    // Verificar se o e-mail existe no banco de dados
+    if ($resposta1_db === null) {
+        echo "E-mail não encontrado. <a href='recupera_usuario.php'>Tente novamente</a>";
+        exit;
+    }
 
-    if (password_verify($resposta1, $resposta1_hash) && password_verify($resposta2, $resposta2_hash) && password_verify($resposta3, $resposta3_hash)) {
+    // Comparar as respostas diretamente (sem hash)
+    if ($resposta1 === $resposta1_db && $resposta2 === $resposta2_db && $resposta3 === $resposta3_db) {
         echo "<!DOCTYPE html>
         <html lang='pt-br'>
         <head>
@@ -48,8 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Respostas incorretas. <a href='recupera_usuario.php'>Tente novamente</a>";
     }
-
-    $stmt->close();
 }
+
 $conn->close();
 ?>
