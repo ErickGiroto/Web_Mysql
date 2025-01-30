@@ -32,6 +32,7 @@ $nome_usuario = $_SESSION['nome_usuario']; // Recupera o nome do usuário da ses
             <ul class="sidebar-list">
                 <li><a class="sidebar-link" href="portal_usuario_editar.php">Editar Perfil</a></li>
                 <li><a class="sidebar-link" href="#">Ver Produtos</a></li>
+                <li><a class="sidebar-link" href="#">Excluir Conta</a></li>
                 <li><a class="sidebar-link" href="logout.php">Sair</a></li>
             </ul>
         </div>
