@@ -37,15 +37,18 @@ $conn->close();
 </head>
 
 <body>
+    <!-- Codigo para deixar o campo do nome na parte superior da pagina
     <div class="user-info">
         <span class="user-name">Olá, <?php echo htmlspecialchars($nome_usuario); ?>!</span>
         <a href="logout.php" class="logout-button">Sair</a>
     </div>
 
+    -->
+
     <div class="container">
         <!-- Menu Lateral -->
         <div class="sidebar">
-            <h2 class="sidebar-title">Menu</h2>
+            <h2 class="sidebar-title"><span class="user-name">Olá, <?php echo htmlspecialchars($nome_usuario); ?>!</span></h2>
             <ul class="sidebar-list">
                 <li><a class="sidebar-link" href="portal_usuario.php">Dashboard</a></li>
                 <li><a class="sidebar-link" href="#">Ver Produtos</a></li>

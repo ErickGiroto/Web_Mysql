@@ -19,16 +19,10 @@ $nome_usuario = $_SESSION['nome_usuario']; // Recupera o nome do usuário da ses
 </head>
 
 <body>
-    <div class="user-info">
-        <span class="user-name">Olá, <?php echo htmlspecialchars($nome_usuario); ?>!</span>
-        <a href="logout.php" class="logout-button">Sair</a>
-    </div>
-
-
     <div class="container">
         <!-- Menu Lateral -->
         <div class="sidebar">
-            <h2 class="sidebar-title">Menu</h2>
+            <h2 class="sidebar-title"><span class="user-name">Olá, <?php echo htmlspecialchars($nome_usuario); ?>!</span></h2>
             <ul class="sidebar-list">
                 <li><a class="sidebar-link" href="portal_usuario_editar.php">Editar Perfil</a></li>
                 <li><a class="sidebar-link" href="#">Ver Produtos</a></li>
