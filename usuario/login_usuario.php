@@ -15,6 +15,7 @@
             <button class="submit-button" type="submit">Entrar</button>
             <p class="forgot-password"><a class="link" href="recupera_usuario.php">Esqueceu sua senha?</a></p>
             <p class="forgot-password"><a class="link" href="cadastro_usuario.php">Não tem conta? Registre-se!</a></p>
+            <p class="forgot-password"><a class="link" href="/index.html">Home</a></p>
         </form>
     </div>
 </body>

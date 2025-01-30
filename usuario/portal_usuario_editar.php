@@ -200,14 +200,6 @@ $conn->close();
 
                     </div>
                 </div>
-
-
-
-
-
-
-                
-
                 <button type="submit">Salvar Alterações</button>
             </form>
         </div>
