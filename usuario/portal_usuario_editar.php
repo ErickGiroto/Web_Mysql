@@ -61,7 +61,27 @@ $conn->close();
         <div class="form-container">
             <h2>Editar Perfil</h2>
 
-            <form action="editar_usuario_processa.php" method="post">
+            <form action="portal_usuario_editar_processa.php" method="post">
+
+            <!-- Exibição de mensagens de sucesso ou erro -->
+                <?php if (isset($_SESSION['success_message'])): ?>
+                    <div class="success-message">
+                        <?php 
+                        echo $_SESSION['success_message']; 
+                        unset($_SESSION['success_message']); // Remove a mensagem após exibição
+                        ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['error_message'])): ?>
+                    <div class="error-message">
+                        <?php 
+                        echo $_SESSION['error_message']; 
+                        unset($_SESSION['error_message']); // Remove a mensagem após exibição
+                        ?>
+                    </div>
+                <?php endif; ?>
+
                 <div class="form-row">
                     <div class="form-group">
                         <input type="text" id="nome_completo" name="nome_completo" value="<?php echo htmlspecialchars($user['nome_completo']); ?>" placeholder="Nome Completo">
@@ -127,7 +147,7 @@ $conn->close();
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="label" for="pergunta1">Pergunta 1</label>
+                        <label class="label" for="pergunta1">Pergunta de Segurança 1</label>
                         <select class="select-field" name="pergunta1" required>
                             <option value="<?php echo htmlspecialchars($user['pergunta1']); ?>" selected><?php echo htmlspecialchars($user['pergunta1']); ?></option>
                             <option value="Qual é o nome do seu primeiro animal de estimação?">Qual é o nome do seu primeiro animal de estimação?</option>
@@ -140,7 +160,7 @@ $conn->close();
                     </div>
 
                     <div class="form-group">
-                        <label class="label" for="pergunta2">Pergunta 2</label>
+                        <label class="label" for="pergunta2">Pergunta de Segurança 2</label>
                         <select class="select-field" name="pergunta2" required>
                             <option value="<?php echo htmlspecialchars($user['pergunta2']); ?>" selected><?php echo htmlspecialchars($user['pergunta2']); ?></option>
                             <option value="Qual é o nome do seu primeiro animal de estimação?">Qual é o nome do seu primeiro animal de estimação?</option>
@@ -155,7 +175,7 @@ $conn->close();
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="label" for="pergunta3">Pergunta 3</label>
+                        <label class="label" for="pergunta3">Pergunta de Segurança 3</label>
                         <select class="select-field" name="pergunta3" required>
                             <option value="<?php echo htmlspecialchars($user['pergunta3']); ?>" selected><?php echo htmlspecialchars($user['pergunta3']); ?></option>
                             <option value="Qual é o nome do seu primeiro animal de estimação?">Qual é o nome do seu primeiro animal de estimação?</option>
@@ -167,6 +187,26 @@ $conn->close();
                         <input class="input-field" type="text" name="resposta3" value="<?php echo htmlspecialchars($user['resposta3']); ?>" placeholder="Resposta" required>
                     </div>
                 </div>
+
+
+                <div class="form-row">
+                    
+                    <div class="form-group">
+                        <label class="titulo" for="aviso">ATENÇÃO: Guarde suas senhas de recuperação! </label> <br><br>
+                        <p class="fonte">Mantenha suas senhas de recuperação em um local seguro. Elas são essenciais para recuperar o acesso à sua conta em 
+                            caso de perda, esquecimento ou problemas de login.
+                            Uma vez perdido o acesso, sem as senhas de recuperação, pode ser impossível recuperar sua conta.</p>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+                
 
                 <button type="submit">Salvar Alterações</button>
             </form>

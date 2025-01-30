@@ -109,6 +109,8 @@ h2 {
     display: flex;
     gap: 15px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
+    /* Permite quebra de linha em telas menores */
 }
 
 .form-group {
@@ -118,7 +120,7 @@ h2 {
 input,
 select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 8px 0;
     border: none;
     border-radius: 8px;
@@ -179,20 +181,7 @@ button:hover {
     }
 }
 
-/* Estilização do nome do usuário */
-/*.user-info {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px 15px;
-    border-radius: 8px;
-}
-*/
-
+/* Links */
 a {
     color: #fff;
     text-decoration: none;
@@ -202,4 +191,41 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.success-message,
+.error-message {
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.success-message {
+
+    font-weight: bold;
+    color: rgb(8, 77, 24);
+
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.fonte {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+
+}
+
+.titulo {
+    text-decoration: dotted;
+    color: rgb(106, 28, 28);
+    font-weight: bold;
 }
